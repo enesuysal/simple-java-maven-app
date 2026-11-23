@@ -1,3 +1,4 @@
+{{- if ne (toString .Values.service.enabled) "false" }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -8,3 +9,4 @@ spec:
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 8080
+{{- end }}
