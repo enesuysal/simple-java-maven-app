@@ -1,0 +1,54 @@
+Day 91:
+etcd timeout - every exisiting pod is up and working
+broken in management side not working side is working
+worker node = Gates, move to pessager 
+control plane = control tower, gate assigment 
+etcd = consistent higly available key value - vault
+       raugh algoritm = majority votes 
+kube=apiserver - frontdoor, only talk etcd
+gracefull degradetion == stop sending instructions
+kube scheduler - unassigned passger --> gate 
+               - taint and tolarations
+               - filtering scoring 
+               - does not start container. 
+kube control manager
+        - replicaset 
+        - observe diff act 
+        - 
+kubelt -- run on pod, when gorev assigned by the api server 
+       -- 
+container runtime CIR 
+       -- Docker 
+kube proxy -- runs on each node -- iptables 
+static pods -- can not be deleted 
+
+3 yere bakilacak ezberle 
+
+
+Day 92:
+pager = oncall dekine cagri gondermek 
+91 in tekrari gibi 
+kctl get pod ... == API server is down 
+ssh control plane 
+CIRCTL 
+kctl describe pod ==> event column 
+kctl log --previous 
+label-selector -- app.web
+deployment -- high level relaease managemtnt
+maxunavailable maxsurge 
+TEKRAR CALIS -- CLAUDE ile 
+
+Day 93:
+-CRASHLOOPBACKOFF == Looop restart 
+- Pending Running Succecced Failed Unknown
+- describe pod -- 
+- exit 0 is ok
+- probs LIVENESS READINESS 
+- RESTART POD vise  ALWAYS ONFAILURE NEVER
+- TERMINATION grace period  SIGTERM SIGKILL
+- PRESTOP hook ? 
+- 
+
+
+Day 94 
+Day 95

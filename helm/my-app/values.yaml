@@ -1,0 +1,14 @@
+replicaCount: 3
+image:
+  repository: localhost:5001/my-app
+  tag: "9"
+  pullPolicy: IfNotPresent
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    memory: 512Mi
+readyOk: "true"
+service:
+  port: 80

@@ -33,11 +33,11 @@ pipeline {
     }
     stage('Docker Build & Push') {
       steps {
-        writeFile file: 'Dockerfile', text: '''FROM eclipse-temurin:21-jre
+ writeFile file: 'Dockerfile', text: '''FROM eclipse-temurin:21-jdk
 ARG APP_VERSION=dev
 ENV APP_VERSION=$APP_VERSION
-COPY target/*.jar /app/app.jar
-CMD ["sh","-c","while true; do echo version=$APP_VERSION; java -cp /app/app.jar com.mycompany.app.App; sleep 10; done"]
+COPY Server.java /app/Server.java
+CMD ["java","/app/Server.java"]
 '''
         withCredentials([usernamePassword(credentialsId: 'nexus-creds',
             usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
