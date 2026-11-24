@@ -1,3 +1,4 @@
+@Library('shared-lib') _
 pipeline {
   agent any
   tools { maven 'maven-3' }
@@ -51,14 +52,7 @@ CMD ["java","/app/Server.java"]
     }
     stage('Deploy to Kubernetes') {
       steps {
-        withCredentials([file(credentialsId: 'kubeconfig-kind', variable: 'KUBECONFIG')]) {
-          sh '''
-            kind load docker-image localhost:5001/my-app:${BUILD_NUMBER} --name cka
-            helm upgrade --install my-app helm/my-app -n demo --create-namespace \
-              --set image.tag=${BUILD_NUMBER} --rollback-on-failure --timeout 2m
-            kubectl -n demo rollout status deploy/my-app --timeout=60s
-          '''
-        }
+        deployToK8s(image: 'localhost:5001/my-app')
       }
     }
   }
